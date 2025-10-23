@@ -25,19 +25,17 @@ try:
         for producto in contenedores_productos:
             nombre_elemento = producto.find('span', class_='product-name')
             precio_elemento = producto.find('p', class_='product-price')
-            codigo = producto.find('span', class_='product-sku')
 
-            if nombre_elemento and precio_elemento and codigo:
+            if nombre_elemento and precio_elemento:
                 nombre = nombre_elemento.text.strip()
                 precio = precio_elemento.text.strip()
-                codigo = codigo.text.strip()
 
-                productos_encontrados.append({'nombre': nombre, 'precio': precio, 'codigo': codigo})
+                productos_encontrados.append({'nombre': nombre, 'precio': precio})
         
         for p in productos_encontrados:
-            print(f"Producto: {p['nombre']}, Precio: {p['precio']} , codigo: {p['codigo']}")
+            print(f"Producto: {p['nombre']}, Precio: {p['precio']}")
     else:
-        print("No se encontraron productos con la clase 'product-card-padding'.")
+        print("No se encontraron productos")
         
 except Exception as e:
     print(f"Ocurrió un error: {e}")
